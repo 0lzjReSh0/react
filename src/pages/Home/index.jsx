@@ -1,4 +1,4 @@
-
+import logo from '../Balance/azusa.jpg'
 const Home= () => {
     return (
         <>
@@ -10,14 +10,7 @@ const Home= () => {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+            <img src={logo} alt="azusa" />
             <br></br>
             <br></br>
             <br></br>
