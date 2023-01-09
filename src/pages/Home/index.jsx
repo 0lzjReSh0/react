@@ -1,26 +1,10 @@
-import logo from '../Balance/azusa.jpg'
+import Homehead from '../../components/Homehead'
+
+
 const Home= () => {
     return (
         <>
-            <div>Home page
-            </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <img src={logo} alt="azusa" />
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+                <Homehead />
         </>
     )
 }

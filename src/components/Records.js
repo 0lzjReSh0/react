@@ -132,9 +132,6 @@ class Records extends Component {
             <AmountBox text="Balance" type="info" amount={this.balance()}/>
         </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
-        {recordsComponent}
-        <Chart credits = {this.credits()} debits = {this.debits()} balance = {this.balance()}/>
-        
       </div>
     );
   }
