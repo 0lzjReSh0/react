@@ -3,7 +3,9 @@ import Record from './Record';
 import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
-import Chart from "../pages/Chart"
+import {
+  Table,TableHeader,TableRow
+ } from "grommet"
 class Records extends Component {
   constructor() {
     super();
@@ -99,16 +101,16 @@ class Records extends Component {
       recordsComponent = <div>Loading...</div>;
     } else {
       recordsComponent = (
-        <table className="table table-bordered">
-          <thead>
-            <tr>
+        <Table className="table table-bordered">
+          <TableHeader>
+          <TableRow>
               <th>Dates</th>
               <th>Title</th>
               <th>Amount</th>
               <th>Actions</th>
-            </tr>
+            </TableRow>
             
-          </thead>
+          </TableHeader>
           <tbody>
             {records.map((record) =>
               (<Record
@@ -119,22 +121,18 @@ class Records extends Component {
               />)
             )}
           </tbody>
-        </table>
+        </Table>
       );
     }
 
     return (
       <div>
-        <h2>Records</h2>
         <div className="row mb-3">
             <AmountBox text="Income" type="success" amount={this.credits()}/>
             <AmountBox text="Cost" type="danger" amount={this.debits()}/>
             <AmountBox text="Balance" type="info" amount={this.balance()}/>
         </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
-        {recordsComponent}
-        <Chart credits = {this.credits()} debits = {this.debits()} balance = {this.balance()}/>
-        
       </div>
     );
   }

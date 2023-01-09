@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import * as RecordsAPI from '../api/RecordsAPI';
+import {
+  DateInput
+} from "grommet"
 
 export default class RecordForm extends Component {
   constructor(props) {
@@ -10,7 +13,6 @@ export default class RecordForm extends Component {
       amount: ""
     }
   }
-
   handleChange(event) {
     let name, obj;
     name = event.target.name;
@@ -52,7 +54,7 @@ export default class RecordForm extends Component {
     return (
       <form className="form-inline mb-3" onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-group mr-1">
-          <input type="text" className="form-control" onChange={this.handleChange.bind(this)} placeholder="Date" name="date" value={this.state.date} />
+          <DateInput format="dd/mm/yyyy" onChange={this.handleChange.bind(this)} placeholder="Date" name="date" value={this.state.data} />
         </div>
         <div className="form-group mr-1">
           <input type="text" className="form-control" onChange={this.handleChange.bind(this)} placeholder="Title" name="title" value={this.state.title} />

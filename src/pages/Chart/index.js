@@ -9,7 +9,6 @@ import {
     Legend
 } from "recharts";
 
-
 export default class index extends Component {
     
   render() {
@@ -63,6 +62,7 @@ export default class index extends Component {
                 </BarChart>
             </>
       </div>
+      
     )
   }
 }
