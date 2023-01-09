@@ -2,7 +2,9 @@ import AmountBox  from './AmountBox';
 import React, { Component } from 'react';
 import * as RecordsAPI from '../api/RecordsAPI';
 import Record from './Record';
-
+import {
+  Table,
+ } from "grommet"
 class Homehead extends Component {
     constructor() {
       super();

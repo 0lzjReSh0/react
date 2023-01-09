@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as RecordsAPI from '../api/RecordsAPI';
-
+import {
+  Table,TableHeader,TableCell,TableBody,TableRow
+ } from "grommet"
 export default class RecordForm extends Component {
   constructor(props) {
     super(props);

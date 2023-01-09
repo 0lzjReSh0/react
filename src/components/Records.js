@@ -4,6 +4,9 @@ import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
 import Chart from "../pages/Chart"
+import {
+  Table,TableHeader,TableCell,TableBody,TableRow
+ } from "grommet"
 class Records extends Component {
   constructor() {
     super();
@@ -99,16 +102,16 @@ class Records extends Component {
       recordsComponent = <div>Loading...</div>;
     } else {
       recordsComponent = (
-        <table className="table table-bordered">
-          <thead>
-            <tr>
+        <Table className="table table-bordered">
+          <TableHeader>
+          <TableRow>
               <th>Dates</th>
               <th>Title</th>
               <th>Amount</th>
               <th>Actions</th>
-            </tr>
+            </TableRow>
             
-          </thead>
+          </TableHeader>
           <tbody>
             {records.map((record) =>
               (<Record
@@ -119,7 +122,7 @@ class Records extends Component {
               />)
             )}
           </tbody>
-        </table>
+        </Table>
       );
     }
 

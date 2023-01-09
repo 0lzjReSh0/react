@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
-
+import {
+  Table,TableHeader,TableCell,TableBody,TableRow
+ } from "grommet"
 export default class Record extends Component {
   constructor() {
     super();
@@ -43,29 +45,29 @@ export default class Record extends Component {
 
   recordRow() {
     return (
-      <tr>
-        <td>{this.props.record.date}</td>
-        <td>{this.props.record.title}</td>
-        <td>{this.props.record.amount}</td>
-        <td>
+      <TableRow>
+        <TableCell>{this.props.record.date}</TableCell>
+        <TableCell>{this.props.record.title}</TableCell>
+        <TableCell>{this.props.record.amount}</TableCell>
+        <TableCell>
           <button className="btn btn-info mr-1" onClick={this.handleToggle.bind(this)}>Edit</button>
           <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   }
 
   recordForm() {
     return (
-      <tr>
-        <td><input type="text" className="form-control" defaultValue={this.props.record.date} ref="date" /></td>
-        <td><input type="text" className="form-control" defaultValue={this.props.record.title} ref="title" /></td>
-        <td><input type="text" className="form-control" defaultValue={this.props.record.amount} ref="amount" /></td>
-        <td>
+      <TableRow>
+        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.date} ref="date" /></TableCell>
+        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.title} ref="title" /></TableCell>
+        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.amount} ref="amount" /></TableCell>
+        <TableCell>
           <button className="btn btn-info mr-1" onClick={this.handleEdit.bind(this)}>Update</button>
           <button className="btn btn-danger" onClick={this.handleToggle.bind(this)}>Cancel</button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     );
   }
 
