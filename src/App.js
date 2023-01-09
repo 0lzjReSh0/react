@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navigation from './navigation';
 import AddIcon from '@mui/icons-material/Add';
+import { Link } from "react-router-dom";
 import AddButton from './components/AddButton'
 import {
     Box,
@@ -11,6 +12,7 @@ import {
     Page,
     PageContent,
     PageHeader,
+    Footer,
     Text,
     Card,
     CardHeader,
@@ -18,6 +20,7 @@ import {
     CardFooter,
     Grid,
     Heading,
+    Anchor,
     Paragraph,
     ResponsiveContext,
    } from "grommet"
@@ -67,9 +70,7 @@ function App() {
         
         <AppBar>
           <Text size="large">Budgeter</Text>
-          <Fab color="primary" aria-label="add">
-            <AddButton />
-          </Fab>
+          
           <Button
            a11yTitle={dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
            icon={dark ? <Moon /> : <Sun />}

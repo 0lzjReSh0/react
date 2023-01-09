@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Addrecord from "../pages/Addrecord"
 import Home from "../pages/Home"
-import { Footer } from "../components/Footer"
+import { FooterBar } from "../components/FooterBar"
 import Chart from "../pages/Chart"
 import Balance from "../pages/Balance"
 import Logpage from "../pages/Login"
@@ -19,7 +19,7 @@ const Navigation = () => {
                 <Route path="/Balance" element={<Balance />} />
                 <Route path="*" element={"Error: Page Not Found"} />
             </Routes>
-            <Footer />
+            <FooterBar />
         </Router>
         
     )
