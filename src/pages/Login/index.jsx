@@ -5,7 +5,6 @@ import './index.css';
 
 const Logpage= () => {
     const [currentForm, setCurrentForm] = useState('login');
-
     const toggleForm = (formName) => {
         setCurrentForm(formName);
     }

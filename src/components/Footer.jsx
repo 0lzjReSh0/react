@@ -19,7 +19,7 @@ export const Footer = () => {
                     <Link to="/Chart">  Chart</Link>
                 </div>
                 <div className="py-6 px-4 bg-gray-700 md:flex md:items-center md:justify-between">
-                <span className="text-sm text-gray-300 sm:text-center">© 2022 zwy. All Rights Reserved.
+                <span className="text-sm text-gray-300 sm:text-center">© 2022 . All Rights Reserved.
                 </span>
             </div>
             </div>
