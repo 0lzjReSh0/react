@@ -120,7 +120,6 @@ class Homehead extends Component {
   
       return (
         <div>
-          <h2>Records</h2>
           <div className="row mb-3">
               <AmountBox text="Income" type="success" amount={this.credits()}/>
               <AmountBox text="Cost" type="danger" amount={this.debits()}/>

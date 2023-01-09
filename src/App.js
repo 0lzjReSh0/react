@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Navigation from './navigation';
+import AddIcon from '@mui/icons-material/Add';
+import AddButton from './components/AddButton'
 import {
     Box,
     Button,
@@ -19,6 +21,8 @@ import {
     Paragraph,
     ResponsiveContext,
    } from "grommet"
+
+import Fab from '@mui/material/Fab';
 import { Moon, Sun } from "grommet-icons"
 import { deepMerge } from "grommet/utils"
 
@@ -30,17 +34,7 @@ const theme = deepMerge(grommet, {
     },
     toolbarTitle: {
       flex: 1,
-    },
-    layout: {
-      width: "auto",
-      marginLeft: grommet.spacing(3),
-      marginRight: grommet.spacing(3),
-      [grommet.breakpoints.up(900 + grommet.spacing(3 * 2))]: {
-        width: 900,
-        marginLeft: "auto",
-        marginRight: "auto",
-      },
-    },
+    },   
     colors: {
       brand: '#ffd700',
     },
@@ -49,11 +43,7 @@ const theme = deepMerge(grommet, {
       size: "18px",
       height: "20px",
     },
-    footer: {
-      marginTop: grommet.spacing(8),
-      borderTop: `1px solid ${grommet.palette.divider}`,
-      padding: `${grommet.spacing(6)}px 0`,
-    },
+    
   },
 });
 
@@ -66,8 +56,10 @@ const AppBar = (props) => (
    />
   );
 
+
 function App() {
   const [dark, setDark] = useState(false)
+  
   return (
     <Grommet theme={theme} full themeMode={dark ? "dark" : "light"}>
       <Page>
@@ -75,6 +67,9 @@ function App() {
         
         <AppBar>
           <Text size="large">Budgeter</Text>
+          <Fab color="primary" aria-label="add">
+            <AddButton />
+          </Fab>
           <Button
            a11yTitle={dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
            icon={dark ? <Moon /> : <Sun />}
@@ -97,7 +92,6 @@ function App() {
         </PageContent>
       </Page>
     </Grommet>
-    
   );
 }
 
