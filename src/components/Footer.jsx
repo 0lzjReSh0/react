@@ -17,8 +17,6 @@ export const Footer = () => {
                     <Link to="/login" >    login|</Link>
                     <Link to="/Addrecord">  Addrecord |</Link>
                     <Link to="/Chart">  Chart</Link>
-                    <br></br>
-                    <a href="https://github.com/zwy923/Bookkeep-react" className="text-xl">Github</a>
                 </div>
                 <div className="py-6 px-4 bg-gray-700 md:flex md:items-center md:justify-between">
                 <span className="text-sm text-gray-300 sm:text-center">© 2022 zwy. All Rights Reserved.
