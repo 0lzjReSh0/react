@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Navigation from './navigation';
-import AddIcon from '@mui/icons-material/Add';
-import AddButton from './components/AddButton'
 import {
     Box,
     Button,
@@ -10,22 +8,11 @@ import {
     grommet,
     Page,
     PageContent,
-    PageHeader,
     Text,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Grid,
-    Heading,
-    Paragraph,
-    ResponsiveContext,
    } from "grommet"
 
-import Fab from '@mui/material/Fab';
 import { Moon, Sun } from "grommet-icons"
 import { deepMerge } from "grommet/utils"
-
 
 const theme = deepMerge(grommet, {
   global: {
@@ -67,9 +54,7 @@ function App() {
         
         <AppBar>
           <Text size="large">Budgeter</Text>
-          <Fab color="primary" aria-label="add">
-            <AddButton />
-          </Fab>
+          <Button primary label="login" href="/login"/>
           <Button
            a11yTitle={dark ? "Switch to Light Mode" : "Switch to Dark Mode"}
            icon={dark ? <Moon /> : <Sun />}

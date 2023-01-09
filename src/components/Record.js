@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
-import {
-  Table,TableHeader,TableCell,TableBody,TableRow
- } from "grommet"
+import {TableCell,TableRow} from "grommet"
 export default class Record extends Component {
   constructor() {
     super();

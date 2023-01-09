@@ -3,9 +3,8 @@ import Record from './Record';
 import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
-import Chart from "../pages/Chart"
 import {
-  Table,TableHeader,TableCell,TableBody,TableRow
+  Table,TableHeader,TableRow
  } from "grommet"
 class Records extends Component {
   constructor() {
