@@ -2,6 +2,8 @@ import AmountBox  from './AmountBox';
 import React, { Component } from 'react';
 import * as RecordsAPI from '../api/RecordsAPI';
 import Record from './Record';
+import { Box, Spinner, Text ,Sidebar,Button,Avatar,Nav } from 'grommet';
+import { Currency,SettingsOption,Logout} from 'grommet-icons';
 class Homehead extends Component {
     constructor() {
       super();
@@ -91,7 +93,15 @@ class Homehead extends Component {
       if (error) {
         recordsComponent = <div>Error: {error.message}</div>;
       } else if (!isLoaded) {
-        recordsComponent = <div>Loading...</div>;
+        recordsComponent = <Box align="center" direction="row" gap="small">
+        <Spinner
+          border={[
+            { side: 'all', color: 'transparent', size: 'medium' },
+            { side: 'horizontal', color: 'brand', size: 'medium' },
+          ]}
+        />
+        <Text>Loading...</Text>
+      </Box>
       } else {
         recordsComponent = (
           <table className="table table-bordered">
@@ -118,14 +128,36 @@ class Homehead extends Component {
       }
   
       return (
-        <div>
-          <div className="row mb-3">
-              <AmountBox text="Income" type="success" amount={this.credits()}/>
-              <AmountBox text="Cost" type="danger" amount={this.debits()}/>
-              <AmountBox text="Balance" type="info" amount={this.balance()}/>
-          </div>
-          {recordsComponent}
-        </div>
+        <Box>
+          <Box direction='row-responsive' margin='small'>
+          <Box  justify='start'>
+            <Sidebar background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)" round="small" width='150px' align='center'
+              header={
+                <Avatar src="" />
+              }
+              footer={
+              <Button icon={<Logout />} hoverIndicator />
+              }
+              >
+              <Nav gap="medium">
+                <Button icon={<Currency />} hoverIndicator />
+                <Button icon={<SettingsOption />} hoverIndicator />
+              </Nav>
+            </Sidebar>
+          </Box>
+            <Box justify="center" margin='large' align='center' width='850px'>
+              <Text> Date </Text>
+          </Box>
+          <Box round="small" alignSelf animation="fadeIn" border elevation='small' width='400px' justify='end'>
+                <AmountBox text="Balance" type="info" amount={this.balance()}/>
+            <Box round="small" alignSelf animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
+                <AmountBox text="Income" type="success" amount={this.credits()}/>
+                <AmountBox text="Cost" type="danger" amount={this.debits()}/>
+            </Box>
+          </Box>
+          </Box>
+        {recordsComponent}
+        </Box>
       );
     }
   }
