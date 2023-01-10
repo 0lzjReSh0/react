@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
 import {TableCell,TableRow} from "grommet"
-import { Box, Button, Heading, Text, Tip } from 'grommet';
-import { Trash,Edit,Close,Update } from 'grommet-icons';
+import {  Button, } from 'grommet';
+import { Trash,Edit,Update } from 'grommet-icons';
 import { Cancel } from '@mui/icons-material';
 export default class Record extends Component {
   constructor() {

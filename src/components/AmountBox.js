@@ -1,5 +1,5 @@
 
-import { Box, Grid } from 'grommet';
+import { Box } from 'grommet';
 const AmountBox=({text,type,amount})=> {
     return (
         <Box direction="column" pad="small" align='center'>
