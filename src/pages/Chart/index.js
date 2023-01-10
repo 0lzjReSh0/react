@@ -75,13 +75,13 @@ export default class index extends Component {
                 <>
 
                     <BarChart
-                        width={500}
-                        height={300}
+                        width={1200}
+                        height={500}
                         data={data}
                         margin={{
                             top: 5,
                             right: 30,
-                            left: 20,
+                            left: 300,
                             bottom: 5,
                         }}
                         barSize={20}
