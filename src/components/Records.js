@@ -96,6 +96,7 @@ class Records extends Component {
 
   render() {
     const { error, isLoaded, records } = this.state;
+    console.log(records);
     let recordsComponent;
 
     if (error) {
@@ -158,9 +159,9 @@ class Records extends Component {
             <Box justify="center" margin='large' align='center' width='850px'>
               <Text> Date </Text>
           </Box>
-          <Box round="small" alignSelf animation="fadeIn" border elevation='small' width='400px' justify='end'>
+          <Box round="small" animation="fadeIn" border elevation='small' width='400px' justify='end'>
                 <AmountBox text="Balance" type="info" amount={this.balance()}/>
-            <Box round="small" alignSelf animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
+            <Box round="small" animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
                 <AmountBox text="Income" type="success" amount={this.credits()}/>
                 <AmountBox text="Cost" type="danger" amount={this.debits()}/>
             </Box>
