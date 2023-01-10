@@ -3,6 +3,7 @@ import Record from './Record';
 import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
+import { Box, Spinner, Text } from 'grommet';
 import {
   Table,TableHeader,TableRow
  } from "grommet"
@@ -97,8 +98,17 @@ class Records extends Component {
 
     if (error) {
       recordsComponent = <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      recordsComponent = <div>Loading...</div>;
+    } else if (!isLoaded) 
+    {
+      recordsComponent = <Box align="center" direction="row" gap="small">
+      <Spinner
+        border={[
+          { side: 'all', color: 'transparent', size: 'medium' },
+          { side: 'horizontal', color: 'brand', size: 'medium' },
+        ]}
+      />
+      <Text>Loading...</Text>
+</Box>;
     } else {
       recordsComponent = (
         <Table className="table table-bordered">

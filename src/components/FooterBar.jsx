@@ -7,18 +7,15 @@ import {
 
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-
-
+import AddButton from "./AddButton";
+import { BarChart,Catalog } from "grommet-icons";
 export const FooterBar = () => {
     // const navigate = useNavigate();
     return (
         <Footer background="brand" pad="medium">
-            <Button primary label="Home" href="/"/>
-            <Fab color="primary" aria-label="add">
-                <AddIcon href='/Addrecord'/>
-            </Fab>
-            <Button primary label="Addrecord" href="/Addrecord"/>
-            <Button primary label="Chart" href="/Chart"/>
+            <Button primary icon={<Catalog />} href="/"/>
+            <AddButton />
+            <Button primary icon={<BarChart />} href="/Chart"/>
         </Footer>
     )
 }

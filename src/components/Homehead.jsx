@@ -2,6 +2,7 @@ import AmountBox  from './AmountBox';
 import React, { Component } from 'react';
 import * as RecordsAPI from '../api/RecordsAPI';
 import Record from './Record';
+import { Box, Spinner, Text } from 'grommet';
 class Homehead extends Component {
     constructor() {
       super();
@@ -91,7 +92,15 @@ class Homehead extends Component {
       if (error) {
         recordsComponent = <div>Error: {error.message}</div>;
       } else if (!isLoaded) {
-        recordsComponent = <div>Loading...</div>;
+        recordsComponent = <Box align="center" direction="row" gap="small">
+        <Spinner
+          border={[
+            { side: 'all', color: 'transparent', size: 'medium' },
+            { side: 'horizontal', color: 'brand', size: 'medium' },
+          ]}
+        />
+        <Text>Loading...</Text>
+      </Box>
       } else {
         recordsComponent = (
           <table className="table table-bordered">
