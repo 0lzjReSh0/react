@@ -52,7 +52,7 @@ function App() {
       <Page>
       <PageContent>
         
-        <AppBar>
+        <AppBar round='small'>
           <Text size="large">Budgeter</Text>
           <Button primary label="login" href="/login"/>
           <Button

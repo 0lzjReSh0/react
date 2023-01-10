@@ -12,7 +12,7 @@ export default function AddButton(props) {
     }
     return (
         <Box round="full" overflow="hidden" background="neutral-1">
-          <Button icon={<Add />} hoverIndicator onClick={handleClick} />
+          <Button icon={<Add />} primary size="large" hoverIndicator onClick={handleClick} />
         </Box>
     );
   }

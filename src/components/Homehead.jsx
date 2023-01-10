@@ -127,14 +127,21 @@ class Homehead extends Component {
       }
   
       return (
-        <div>
-          <div className="row mb-3">
-              <AmountBox text="Income" type="success" amount={this.credits()}/>
-              <AmountBox text="Cost" type="danger" amount={this.debits()}/>
-              <AmountBox text="Balance" type="info" amount={this.balance()}/>
-          </div>
-          {recordsComponent}
-        </div>
+        <Box>
+          <Box direction='row-responsive' justify='center' margin='small'>
+            <Box justify="around" margin='large' width='600px'>
+              <Text> Date </Text>
+            </Box>
+          <Box round="small" alignSelf animation="fadeIn" border elevation='small' width='300px'>
+                <AmountBox text="Balance" type="info" amount={this.balance()}/>
+            <Box round="small" alignSelf animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
+                <AmountBox text="Income" type="success" amount={this.credits()}/>
+                <AmountBox text="Cost" type="danger" amount={this.debits()}/>
+            </Box>
+          </Box>
+          </Box>
+        {recordsComponent}
+        </Box>
       );
     }
   }

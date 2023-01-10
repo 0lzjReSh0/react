@@ -136,14 +136,16 @@ class Records extends Component {
     }
 
     return (
-      <div>
-        <div className="row mb-3">
-            <AmountBox text="Income" type="success" amount={this.credits()}/>
-            <AmountBox text="Cost" type="danger" amount={this.debits()}/>
-            <AmountBox text="Balance" type="info" amount={this.balance()}/>
-        </div>
+      <Box>
+        <Box round="small" alignSelf animation="fadeIn" justify='center'>
+                <AmountBox text="Balance" type="info" amount={this.balance()}/>
+            <Box round="small" alignSelf animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
+                <AmountBox text="Income" type="success" amount={this.credits()}/>
+                <AmountBox text="Cost" type="danger" amount={this.debits()}/>
+            </Box>
+          </Box>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
-      </div>
+      </Box>
     );
   }
 

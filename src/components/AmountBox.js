@@ -1,17 +1,15 @@
 
-
+import { Box, Grid } from 'grommet';
 const AmountBox=({text,type,amount})=> {
     return (
-        <div className="col">
-            <div className="card">
-                <div className={`card-header bg-${type} text-black`}>
+        <Box direction="column" pad="small" align='center'>
+                <Box pad="small" border='bottom'>
                     {text}
-                </div>
-                <div className='card-body text-black'>
+                </Box>
+                <Box pad="small" >
                     {amount}
-                </div>
-            </div>
-        </div>
+                </Box>
+        </Box>
     );
 }
 export default AmountBox;
