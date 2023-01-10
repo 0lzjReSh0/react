@@ -3,10 +3,12 @@ import Record from './Record';
 import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
-import { Box, Spinner, Text } from 'grommet';
+import { Box, Spinner, Text ,Sidebar,Button,Avatar,Nav } from 'grommet';
 import {
   Table,TableHeader,TableRow
  } from "grommet"
+
+ import { Currency,SettingsOption,Logout} from 'grommet-icons';
 class Records extends Component {
   constructor() {
     super();
@@ -137,12 +139,32 @@ class Records extends Component {
 
     return (
       <Box>
-        <Box round="small" alignSelf animation="fadeIn" justify='center'>
+        <Box direction='row-responsive' margin='small'>
+        <Box  justify='start'>
+            <Sidebar background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)" round="small" width='150px' align='center'
+              header={
+                <Avatar src="" />
+              }
+              footer={
+              <Button icon={<Logout />} hoverIndicator />
+              }
+              >
+              <Nav gap="medium">
+                <Button icon={<Currency />} hoverIndicator />
+                <Button icon={<SettingsOption />} hoverIndicator />
+              </Nav>
+            </Sidebar>
+          </Box>
+            <Box justify="center" margin='large' align='center' width='850px'>
+              <Text> Date </Text>
+          </Box>
+          <Box round="small" alignSelf animation="fadeIn" border elevation='small' width='400px' justify='end'>
                 <AmountBox text="Balance" type="info" amount={this.balance()}/>
             <Box round="small" alignSelf animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
                 <AmountBox text="Income" type="success" amount={this.credits()}/>
                 <AmountBox text="Cost" type="danger" amount={this.debits()}/>
             </Box>
+          </Box>
           </Box>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
       </Box>
