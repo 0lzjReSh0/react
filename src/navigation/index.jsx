@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes
+    , } from "react-router-dom"
 import Addrecord from "../pages/Addrecord"
+import React from "react";
 import Home from "../pages/Home"
 import Chart from "../pages/Chart"
 import Balance from "../pages/Balance"
 import Logpage from "../pages/Login"
 import { FooterBar } from "../components/FooterBar"
-
 const Navigation = () => {
 
     return (
