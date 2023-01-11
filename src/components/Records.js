@@ -96,6 +96,7 @@ class Records extends Component {
 
   render() {
     const { error, isLoaded, records } = this.state;
+    console.log(records);
     let recordsComponent;
 
     if (error) {

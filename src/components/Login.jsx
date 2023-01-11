@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from 'react-router-dom';
+
 
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/home')
         console.log(email);
     }
 
@@ -25,4 +24,5 @@ export const Login = (props) => {
             <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
         </div>
     )
+
 }
