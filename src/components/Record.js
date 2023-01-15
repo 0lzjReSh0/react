@@ -1,74 +1,66 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
-import {TableCell,TableRow} from "grommet"
-import {  Button, } from 'grommet';
-import { Trash,Edit,Update } from 'grommet-icons';
-import { Cancel } from '@mui/icons-material';
-export default class Record extends Component {
-  constructor() {
-    super();
-    this.state = {
-      edit: false
-    };
-  }
 
-  handleToggle() {
+class Record extends Component {
+  state = {
+    edit: false,
+    record: this.props.record
+  };
+
+  handleToggle = () => {
     this.setState({
       edit: !this.state.edit
     });
   }
 
-  handleEdit(event) {
+  handleDelete = (event) => {
     event.preventDefault();
-    const record = {
-      date: this.refs.date.value,
-      title: this.refs.title.value,
-      amount: Number.parseInt(this.refs.amount.value, 0)
-    }
-    RecordsAPI.update(this.props.record.id, record).then(
+    RecordsAPI.remove(this.state.record.id).then(
+      response => this.props.handleDeleteRecord(this.state.record)
+    )
+  }
+  handleEdit = (event) => {
+    event.preventDefault();
+    RecordsAPI.update(this.state.record.id, this.state.record).then(
       response => {
-        this.props.handleEditRecord(this.props.record, response.data);
+        this.props.handleEditRecord(this.state.record, response.data);
       }
-    ).catch(
-      error => console.log(error.message)
     )
   }
 
-  handleDelete(event) {
-    event.preventDefault();
-    RecordsAPI.remove(this.props.record.id).then(
-      response => this.props.handleDeleteRecord(this.props.record)
-    ).catch(
-      error => console.log(error.message)
-    )
+  handleChange = (event) => {
+    let record = this.state.record
+    record[event.target.name] = event.target.value
+    this.setState({record})
   }
 
   recordRow() {
     return (
-      <TableRow>
-        <TableCell>{this.props.record.date}</TableCell>
-        <TableCell>{this.props.record.title}</TableCell>
-        <TableCell>{this.props.record.amount}</TableCell>
-        <TableCell>
-          <Button icon={<Edit />} plain={false} onClick={this.handleToggle.bind(this)}/>
-          <Button icon={<Trash />} plain={false} onClick={this.handleDelete.bind(this)}/>
-        </TableCell>
-      </TableRow>
+      <tr>
+        <td>{this.state.record.date}</td>
+        <td>{this.state.record.title}</td>
+        <td>{this.state.record.amount}</td>
+        <td>
+          <button className="btn btn-info mr-1" onClick={this.handleToggle}>Edit</button>
+          <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+        </td>
+      </tr>
     );
   }
 
+
   recordForm() {
     return (
-      <TableRow>
-        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.date} ref="date" /></TableCell>
-        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.title} ref="title" /></TableCell>
-        <TableCell><input type="text" className="form-control" defaultValue={this.props.record.amount} ref="amount" /></TableCell>
-        <TableCell>
-          <Button icon={<Update />} plain={false} onClick={this.handleEdit.bind(this)}/>
-          <Button icon={<Cancel />} plain={false} onClick={this.handleToggle.bind(this)}/>
-        </TableCell>
-      </TableRow>
+      <tr>
+        <td><input type="text" className="form-control" name="date" value={this.state.record.date} onChange={this.handleChange}/></td>
+        <td><input type="text" className="form-control" name="title" value={this.state.record.title} onChange={this.handleChange}/></td>
+        <td><input type="text" className="form-control" name="amount" value={this.state.record.amount} onChange={this.handleChange}/></td>
+        <td>
+          <button className="btn btn-info mr-1" onClick={this.handleEdit}>Update</button>
+          <button className="btn btn-danger" onClick={this.handleToggle}>Cancel</button>
+        </td>
+      </tr>
     );
   }
 
@@ -82,5 +74,7 @@ export default class Record extends Component {
 }
 
 Record.propTypes = {
-  record: PropTypes.object
-}
+    record: PropTypes.object
+  }
+  
+  export default Record;
