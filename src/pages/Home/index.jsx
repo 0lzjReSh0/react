@@ -1,10 +1,10 @@
-import Homehead from '../../components/HomeHead'
+import HomeHead from '../../components/HomeHead'
 
 
 const Home= () => {
     return (
         <>
-                <Homehead />
+                <HomeHead />
         </>
     )
 }

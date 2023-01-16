@@ -1,11 +1,11 @@
-import Records from '../../components/Records'
+import Records from "../../components/Records";
 
 const Addrecord = () => {
-    return (
-        <>
-            <Records />
-        </>
-    )
-}
+  return (
+    <>
+      <Records />
+    </>
+  );
+};
 
-export default Addrecord
+export default Addrecord;
