@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';// Importing PropTypes for typechecking the props passed to the component
-import * as RecordsAPI from '../api/RecordsAPI';// Importing the API file for handling the HTTP requests
-import { TableCell, TableRow } from "grommet"// Importing the grommet TableCell and TableRow components
-import { Button, } from 'grommet';// Importing the grommet Button component
-import { Trash, Edit, Update } from 'grommet-icons';// Importing the grommet icons for delete and edit buttons
-import { Cancel } from '@mui/icons-material';// Importing the Cancel from @mui/icons-material
-// Record component
+import PropTypes from 'prop-types';
+import * as RecordsAPI from '../api/RecordsAPI';
+import { TableCell, TableRow } from "grommet"
+import { Button, } from 'grommet';
+import { Trash, Edit, Update } from 'grommet-icons';
+import { Cancel } from '@mui/icons-material';
 export default class Record extends Component {
   constructor() {
     super();
@@ -21,16 +20,13 @@ export default class Record extends Component {
       }
     );
   }
-  // Function to handle the deletion of a record
+  //delete
   DeleteRecords(event) {
     event.preventDefault();
-    // Calling the remove method of the RecordsAPI with the record id
     RecordsAPI.remove(this.props.record.id).then(
       response => this.props.handleDeleteRecord(this.props.record)
-      //passing the deleted record to the parent component's handleDeleteRecord method
     )
   }
-  // Function to handle the editing of a record
   handleEdit(event) {
     event.preventDefault();
     const record = {
@@ -46,7 +42,6 @@ export default class Record extends Component {
       }
     )
   }
-  // Function to render the record in read-only mode
   recordRow() {
     return (
       <TableRow>
