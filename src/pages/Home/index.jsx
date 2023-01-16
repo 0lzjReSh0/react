@@ -1,4 +1,4 @@
-import Homehead from '../../components/Homehead'
+import Homehead from '../../components/HomeHead'
 
 
 const Home= () => {

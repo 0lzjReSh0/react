@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
-import {TableCell,TableRow} from "grommet"
+import { TableCell, TableRow } from "grommet"
+import { Button, } from 'grommet';
+import { Trash, Edit, Update } from 'grommet-icons';
+import { Cancel } from '@mui/icons-material';
 export default class Record extends Component {
   constructor() {
     super();
@@ -9,13 +12,21 @@ export default class Record extends Component {
       edit: false
     };
   }
-
-  handleToggle() {
-    this.setState({
-      edit: !this.state.edit
-    });
+  //switch control
+  SwitchOver() {
+    this.setState(
+      {
+        edit: !this.state.edit
+      }
+    );
   }
-
+  //delete
+  DeleteRecords(event) {
+    event.preventDefault();
+    RecordsAPI.remove(this.props.record.id).then(
+      response => this.props.handleDeleteRecord(this.props.record)
+    )
+  }
   handleEdit(event) {
     event.preventDefault();
     const record = {
@@ -27,29 +38,20 @@ export default class Record extends Component {
       response => {
         this.props.handleEditRecord(this.props.record, response.data);
       }
-    ).catch(
-      error => console.log(error.message)
     )
   }
-
-  handleDelete(event) {
-    event.preventDefault();
-    RecordsAPI.remove(this.props.record.id).then(
-      response => this.props.handleDeleteRecord(this.props.record)
-    ).catch(
-      error => console.log(error.message)
-    )
-  }
-
   recordRow() {
     return (
       <TableRow>
+
         <TableCell>{this.props.record.date}</TableCell>
         <TableCell>{this.props.record.title}</TableCell>
         <TableCell>{this.props.record.amount}</TableCell>
         <TableCell>
-          <button className="btn btn-info mr-1" onClick={this.handleToggle.bind(this)}>Edit</button>
-          <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
+
+          <Button icon={<Edit />} plain={false} onClick={this.SwitchOver.bind(this)} />
+          <Button icon={<Trash />} plain={false} onClick={this.DeleteRecords.bind(this)} />
+
         </TableCell>
       </TableRow>
     );
@@ -62,12 +64,15 @@ export default class Record extends Component {
         <TableCell><input type="text" className="form-control" defaultValue={this.props.record.title} ref="title" /></TableCell>
         <TableCell><input type="text" className="form-control" defaultValue={this.props.record.amount} ref="amount" /></TableCell>
         <TableCell>
-          <button className="btn btn-info mr-1" onClick={this.handleEdit.bind(this)}>Update</button>
-          <button className="btn btn-danger" onClick={this.handleToggle.bind(this)}>Cancel</button>
+          <Button icon={<Update />} plain={false} onClick={this.handleEdit.bind(this)} />
+          <Button icon={<Cancel />} plain={false} onClick={this.SwitchOver.bind(this)} />
         </TableCell>
       </TableRow>
     );
   }
+
+
+
 
   render() {
     if (this.state.edit) {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Navigation from './navigation';
-
 import {
     Box,
     Button,
@@ -37,7 +36,7 @@ const theme = deepMerge(grommet, {
 
 const AppBar = (props) => (
    <Header
-     background="brand"
+     background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)"
      pad={{ left: "medium", right: "small", vertical: "small" }}
      elevation="medium"
      {...props}
@@ -53,7 +52,7 @@ function App() {
       <Page>
       <PageContent>
         
-        <AppBar>
+        <AppBar round='small'>
           <Text size="large">Budgeter</Text>
           <Button primary label="login" href="/login"/>
           <Button
@@ -77,11 +76,8 @@ function App() {
         <Navigation />
         </PageContent>
       </Page>
-      
     </Grommet>
   );
 }
-
-
 
 export default App;
