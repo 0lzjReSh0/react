@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as RecordsAPI from '../api/RecordsAPI';
 import {TableCell,TableRow} from "grommet"
-import {  Button, } from 'grommet';
-import { Trash,Edit,Update } from 'grommet-icons';
-import { Cancel } from '@mui/icons-material';
 export default class Record extends Component {
   constructor() {
     super();
@@ -51,8 +48,8 @@ export default class Record extends Component {
         <TableCell>{this.props.record.title}</TableCell>
         <TableCell>{this.props.record.amount}</TableCell>
         <TableCell>
-          <Button icon={<Edit />} plain={false} onClick={this.handleToggle.bind(this)}/>
-          <Button icon={<Trash />} plain={false} onClick={this.handleDelete.bind(this)}/>
+          <button className="btn btn-info mr-1" onClick={this.handleToggle.bind(this)}>Edit</button>
+          <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
         </TableCell>
       </TableRow>
     );
@@ -65,8 +62,8 @@ export default class Record extends Component {
         <TableCell><input type="text" className="form-control" defaultValue={this.props.record.title} ref="title" /></TableCell>
         <TableCell><input type="text" className="form-control" defaultValue={this.props.record.amount} ref="amount" /></TableCell>
         <TableCell>
-          <Button icon={<Update />} plain={false} onClick={this.handleEdit.bind(this)}/>
-          <Button icon={<Cancel />} plain={false} onClick={this.handleToggle.bind(this)}/>
+          <button className="btn btn-info mr-1" onClick={this.handleEdit.bind(this)}>Update</button>
+          <button className="btn btn-danger" onClick={this.handleToggle.bind(this)}>Cancel</button>
         </TableCell>
       </TableRow>
     );

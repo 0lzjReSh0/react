@@ -3,12 +3,15 @@ import Record from './Record';
 import * as RecordsAPI from '../api/RecordsAPI';
 import RecordForm from './RecordForm';
 import AmountBox  from './AmountBox';
-import { Box, Spinner, Text ,Sidebar,Button,Avatar,Nav } from 'grommet';
+
+import Chart from "../Chart/index.jsx";
 import {
   Table,TableHeader,TableRow
  } from "grommet"
+import { getTypographyUtilityClass } from '@mui/material';
 
- import { Currency,SettingsOption,Logout} from 'grommet-icons';
+
+export const MainContext = React.createContext();
 class Records extends Component {
   constructor() {
     super();
@@ -96,22 +99,12 @@ class Records extends Component {
 
   render() {
     const { error, isLoaded, records } = this.state;
-    console.log(records);
     let recordsComponent;
 
     if (error) {
       recordsComponent = <div>Error: {error.message}</div>;
-    } else if (!isLoaded) 
-    {
-      recordsComponent = <Box align="center" direction="row" gap="small">
-      <Spinner
-        border={[
-          { side: 'all', color: 'transparent', size: 'medium' },
-          { side: 'horizontal', color: 'brand', size: 'medium' },
-        ]}
-      />
-      <Text>Loading...</Text>
-</Box>;
+    } else if (!isLoaded) {
+      recordsComponent = <div>Loading...</div>;
     } else {
       recordsComponent = (
         <Table className="table table-bordered">
@@ -137,38 +130,25 @@ class Records extends Component {
         </Table>
       );
     }
-
+    const data = {
+      balance: this.balance(),
+      credits: this.credits(),
+      debits: this.debits()
+    }
+    
     return (
-      <Box>
-        <Box direction='row-responsive' margin='small'>
-        <Box  justify='start'>
-            <Sidebar background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)" round="small" width='150px' align='center'
-              header={
-                <Avatar src="" />
-              }
-              footer={
-              <Button icon={<Logout />} hoverIndicator />
-              }
-              >
-              <Nav gap="medium">
-                <Button icon={<Currency />} hoverIndicator />
-                <Button icon={<SettingsOption />} hoverIndicator />
-              </Nav>
-            </Sidebar>
-          </Box>
-            <Box justify="center" margin='large' align='center' width='850px'>
-              <Text> Date </Text>
-          </Box>
-          <Box round="small" animation="fadeIn" border elevation='small' width='400px' justify='end'>
-                <AmountBox text="Balance" type="info" amount={this.balance()}/>
-            <Box round="small" animation="fadeIn" pad='small' direction='row-responsive' flex='grow' justify='center'>
-                <AmountBox text="Income" type="success" amount={this.credits()}/>
-                <AmountBox text="Cost" type="danger" amount={this.debits()}/>
-            </Box>
-          </Box>
-          </Box>
+      <div>
+        <MainContext.Provider value = {data}>
+          <Chart/>
+        </MainContext.Provider>
+        <div className="row mb-3">
+            <AmountBox text="Income" type="success" amount={this.credits()}/>
+            <AmountBox text="Cost" type="danger" amount={this.debits()}/>
+            <AmountBox text="Balance" type="info" amount={this.balance()}/>
+        </div>
         <RecordForm handleNewRecord={this.addRecord.bind(this)} />
-      </Box>
+        
+      </div>
     );
   }
 

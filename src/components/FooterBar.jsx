@@ -5,15 +5,20 @@ import {
     Footer,
    } from "grommet"
 
-import AddButton from "./AddButton";
-import { BarChart,Catalog } from "grommet-icons";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+
+
 export const FooterBar = () => {
     // const navigate = useNavigate();
     return (
-        <Footer background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)" pad="medium" border round="small" >
-            <Button primary icon={<Catalog />}  href="/" />
-            <AddButton />
-            <Button primary icon={<BarChart />} href="/Chart"/>
+        <Footer background="brand" pad="medium">
+            <Button primary label="Home" href="/"/>
+            <Fab color="primary" aria-label="add">
+                <AddIcon href='/Addrecord'/>
+            </Fab>
+            <Button primary label="Addrecord" href="/Addrecord"/>
+            <Button primary label="Chart" href="/Chart"/>
         </Footer>
     )
 }
